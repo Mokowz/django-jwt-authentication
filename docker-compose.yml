@@ -1,0 +1,24 @@
+services:
+  backend:
+    build: .
+    volumes:
+      - .:/auth/djw-auth-1
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    env_file:
+      - .env
+  db:
+    image: postgres:16.3-alpine3.20
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/djw/auth1/postgres/data
+    environment:
+      - POSTGRES_NAME=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+
+volumes:
+  postgres_data:
