@@ -1,4 +1,4 @@
-name: my-first-github-actions
+name: build-docker-image
 
 on:
   push:
