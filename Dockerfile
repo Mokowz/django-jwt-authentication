@@ -1,4 +1,4 @@
-FROM python:3.13.0b1-slim-bookworm
+FROM python:3.8.3-slim-buster
 
 # Set up the workdir
 WORKDIR /auth/djw-auth-1
@@ -7,8 +7,10 @@ WORKDIR /auth/djw-auth-1
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
+RUN pip install --upgrade pip
+
 # Install the dependencies
-COPY requirements.txt .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy the whole project
